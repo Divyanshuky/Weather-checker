@@ -40,7 +40,7 @@
           <p><strong>${obj.weather[0].main}</strong>: ${obj.weather[0].description}</p>
           <p>🌡 Temperature: ${Math.round(obj.main.temp)}°C</p>
           <p>💧 Humidity: ${obj.main.humidity}%</p>
-          <img src="http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="Weather Icon">
+          <img src="https://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="Weather Icon">
         `;
       } catch (error) {
         document.getElementById('weatherResult').innerHTML =
