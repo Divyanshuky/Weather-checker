@@ -93,3 +93,21 @@ button:hover {
   border-radius: 10px;
   text-align: center;
 }
+.refresh-btn {
+  background: none;
+  border: none;
+  color: #ffcc70;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.refresh-btn:hover {
+  color: #ff9800;
+}
+
+.refresh-btn:focus {
+  outline: none;
+}
+
