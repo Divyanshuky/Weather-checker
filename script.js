@@ -1,4 +1,4 @@
-link1 = "https://api.openweathermap.org/geo/1.0/direct?q=Lucknow,IND&appid=0c3bc4088571169278663e77ba96b889";
+link1 = "https://api.openweathermap.org/geo/1.0/direct?q=Lucknow,IND&appid=53f35d7b78cfca83fa7a027d96e1afc3";
 let request = new XMLHttpRequest();
 
 request.open('GET', link1, true);
@@ -9,7 +9,7 @@ request.onload = function () {
         let lat = obj[0].lat;
         let long = obj[0].lon;
 
-        link2 = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=0c3bc4088571169278663e77ba96b889";
+        link2 = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + long + "&appid=53f35d7b78cfca83fa7a027d96e1afc3";
         request.open('GET', link2, true);
         request.onload = function () {
             let data = JSON.parse(this.response);
