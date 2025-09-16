@@ -1,63 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Page</title>
-  <link rel="stylesheet" href="api.css">
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API App</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- Ionic Icons package -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Weather Checker</h1>
-    <input type="text" id="city" placeholder="Enter city name">
-    <button onclick="getWeather()">Get Weather</button>
-    <div class="weather" id="weatherResult"></div>
-  </div>
+    <div class="container-fluid wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title mb-3">
+                    <ion-icon name="location-outline"></ion-icon><span id="city"></span>
+                </h5>
 
-  <script>
-    async function getWeather() {
-      const city = document.getElementById('city').value;
-      const apiKey = "53f35d7b78cfca83fa7a027d96e1afc3"; 
+                <h6 class="card-subtitle mb-5" id="weatherType">Few Clouds</h6>
 
-      if (!city) {
-        alert("Please enter a city name!");
-        return;
-      }
+                <h1 class="card-text mb-5"><span id="temp"></span><sup>o</sup>C</h1>
 
-      try {
-        const response = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-        );
+                <div class="details mb-5">
+                    Humidity: <span id="humidity"></span>
+                    &nbsp;&nbsp;
+                    Wind Speed: <span id="windspeed"></span>
+                </div>
 
-        if (!response.ok) {
-          throw new Error("City not found");
-        }
+                <p class="mb-5">
+                    <img src="" alt="weather_img" id="weatherImg">
+                </p>
 
-        const obj = await response.json();
-
-        document.getElementById('weatherResult').innerHTML = `
-          <div class="weather-box">
-            <h2>
-              ${obj.name}, ${obj.sys.country}
-              <button class="refresh-btn" onclick="getWeather()" title="Refresh">
-                <i class="fa-solid fa-rotate-right"></i>
-              </button>
-            </h2>
-            <p><strong>${obj.weather[0].main}</strong>: ${obj.weather[0].description}</p>
-            <p>🌡 Temperature: ${Math.round(obj.main.temp)}°C</p>
-            <p>💧 Humidity: ${obj.main.humidity}%</p>
-            <img src="http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png" alt="Weather Icon">
-          </div>
-        `;
-      } catch (error) {
-        document.getElementById('weatherResult').innerHTML =
-          `<p style="color:red;">${error.message}</p>`;
-      }
-    }
-  </script>
+                <p class="refresh-icon" onclick="refreshWeather()">
+                    <ion-icon name="refresh-outline"></ion-icon>
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
